@@ -3,64 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explora las películas de muestra disponibles en CinePass.">
     <title>Cartelera | CinePass</title>
     <link rel="stylesheet" href="css/estilos.css">
     <script src="js/cartelera.js" defer></script>
 </head>
 <body>
-    <!-- Encabezado y navegación principal -->
+    <!-- Encabezado compartido entre las páginas -->
     <header class="encabezado">
         <div class="contenedor barra">
-            <a class="logo" href="index.html">Cine<span>Pass</span></a>
-            <nav aria-label="Navegación principal">
+            <a class="logo" href="index.html" aria-label="CinePass, ir a Inicio">Cine<span>Pass</span></a>
+            <nav class="menu" aria-label="Navegación principal">
                 <a href="index.html">Inicio</a>
                 <a class="activo" href="cartelera.html" aria-current="page">Cartelera</a>
+                <a href="index.html#proximamente">Mis boletos</a>
+                <a href="index.html#proximamente">Administración</a>
             </nav>
         </div>
     </header>
 
-    <main class="contenedor seccion">
-        <h1>Cartelera</h1>
-        <p class="descripcion">Encuentra una película para tu próxima visita.</p>
+    <main>
+        <!-- Introducción de la cartelera -->
+        <section class="portada-interna">
+            <div class="contenedor">
+                <p class="etiqueta">EN LA PANTALLA GRANDE</p>
+                <h1>Cartelera</h1>
+                <p>Descubre historias para todos los gustos. Las películas mostradas son ejemplos para desarrollar CinePass.</p>
+            </div>
+        </section>
 
-        <!-- Buscador controlado mediante JavaScript -->
-        <div class="buscador">
-            <label for="buscar-pelicula">Buscar película</label>
-            <input type="search" id="buscar-pelicula" placeholder="Escribe el título...">
-        </div>
+        <!-- Búsqueda, filtro y lista de películas -->
+        <section class="contenedor seccion" aria-label="Películas disponibles">
+            <div class="filtros">
+                <div class="campo campo-busqueda">
+                    <label for="buscar-pelicula">Buscar película</label>
+                    <input type="search" id="buscar-pelicula" placeholder="Escribe un título..." autocomplete="off">
+                </div>
+                <div class="campo campo-genero">
+                    <label for="filtrar-genero">Género</label>
+                    <select id="filtrar-genero">
+                        <option value="todos">Todos los géneros</option>
+                        <option value="Ciencia ficción">Ciencia ficción</option>
+                        <option value="Misterio">Misterio</option>
+                        <option value="Animación">Animación</option>
+                        <option value="Aventura">Aventura</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Acción">Acción</option>
+                    </select>
+                </div>
+            </div>
+            <p class="resultados" id="contador-peliculas" role="status" aria-live="polite">Mostrando 6 películas de ejemplo</p>
 
-        <!-- Películas de ejemplo; después vendrán de la API REST -->
-        <section aria-label="Películas disponibles">
             <div class="cuadricula" id="lista-peliculas">
-                <article class="tarjeta">
-                    <div class="poster poster-uno" aria-hidden="true">✦</div>
-                    <div class="tarjeta-contenido">
-                        <h2>Órbita 9</h2>
-                        <p>Ciencia ficción · 120 min</p>
-                        <p>Clasificación: B</p>
-                    </div>
+                <article class="tarjeta" data-titulo="Órbita 9" data-genero="Ciencia ficción">
+                    <div class="poster poster-uno" aria-hidden="true"><span class="poster-simbolo">✦</span><span class="poster-lema">MÁS ALLÁ DE LAS ESTRELLAS</span></div>
+                    <div class="tarjeta-contenido"><span class="categoria">Ciencia ficción</span><h2>Órbita 9</h2><p>120 min · Clasificación B</p><a class="enlace-tarjeta" href="index.html#proximamente">Ver detalles →</a></div>
                 </article>
-                <article class="tarjeta">
-                    <div class="poster poster-dos" aria-hidden="true">◆</div>
-                    <div class="tarjeta-contenido">
-                        <h2>Sombras del Faro</h2>
-                        <p>Misterio · 105 min</p>
-                        <p>Clasificación: B15</p>
-                    </div>
+                <article class="tarjeta" data-titulo="Sombras del Faro" data-genero="Misterio">
+                    <div class="poster poster-dos" aria-hidden="true"><span class="poster-simbolo">◆</span><span class="poster-lema">EL MISTERIO TE ESPERA</span></div>
+                    <div class="tarjeta-contenido"><span class="categoria">Misterio</span><h2>Sombras del Faro</h2><p>105 min · Clasificación B15</p><a class="enlace-tarjeta" href="index.html#proximamente">Ver detalles →</a></div>
                 </article>
-                <article class="tarjeta">
-                    <div class="poster poster-tres" aria-hidden="true">★</div>
-                    <div class="tarjeta-contenido">
-                        <h2>Aventura Pixel</h2>
-                        <p>Animación · 95 min</p>
-                        <p>Clasificación: A</p>
-                    </div>
+                <article class="tarjeta" data-titulo="Aventura Pixel" data-genero="Animación">
+                    <div class="poster poster-tres" aria-hidden="true"><span class="poster-simbolo">★</span><span class="poster-lema">EL JUEGO APENAS COMIENZA</span></div>
+                    <div class="tarjeta-contenido"><span class="categoria">Animación</span><h2>Aventura Pixel</h2><p>95 min · Clasificación A</p><a class="enlace-tarjeta" href="index.html#proximamente">Ver detalles →</a></div>
+                </article>
+                <article class="tarjeta" data-titulo="Ruta Salvaje" data-genero="Aventura">
+                    <div class="poster poster-cuatro" aria-hidden="true"><span class="poster-simbolo">▲</span><span class="poster-lema">NADA ESTÁ ESCRITO</span></div>
+                    <div class="tarjeta-contenido"><span class="categoria">Aventura</span><h2>Ruta Salvaje</h2><p>112 min · Clasificación B</p><a class="enlace-tarjeta" href="index.html#proximamente">Ver detalles →</a></div>
+                </article>
+                <article class="tarjeta" data-titulo="La Última Toma" data-genero="Drama">
+                    <div class="poster poster-cinco" aria-hidden="true"><span class="poster-simbolo">◈</span><span class="poster-lema">UNA HISTORIA POR CONTAR</span></div>
+                    <div class="tarjeta-contenido"><span class="categoria">Drama</span><h2>La Última Toma</h2><p>108 min · Clasificación B</p><a class="enlace-tarjeta" href="index.html#proximamente">Ver detalles →</a></div>
+                </article>
+                <article class="tarjeta" data-titulo="Código Eclipse" data-genero="Acción">
+                    <div class="poster poster-seis" aria-hidden="true"><span class="poster-simbolo">✧</span><span class="poster-lema">CADA SEGUNDO CUENTA</span></div>
+                    <div class="tarjeta-contenido"><span class="categoria">Acción</span><h2>Código Eclipse</h2><p>118 min · Clasificación B15</p><a class="enlace-tarjeta" href="index.html#proximamente">Ver detalles →</a></div>
                 </article>
             </div>
-            <p id="sin-resultados" hidden>No encontramos películas con ese título.</p>
+            <p class="sin-resultados" id="sin-resultados" hidden>No encontramos películas con esos criterios. Prueba otro título o género.</p>
+        </section>
+
+        <!-- Aviso para evitar enlaces a páginas inexistentes -->
+        <section class="contenedor seccion seccion-corta" aria-label="Información sobre las reservaciones">
+            <div class="aviso-simple"><strong>¿Ya elegiste una película?</strong><p>Los detalles, horarios y asientos todavía están en desarrollo por el equipo.</p><a class="enlace-texto" href="index.html#proximamente">Ver módulos en preparación →</a></div>
         </section>
     </main>
 
-    <footer class="pie"><p>CinePass · Proyecto final de Programación Web</p></footer>
+    <footer class="pie"><div class="contenedor pie-contenido"><p><strong>CinePass</strong> · Proyecto final de Programación Web</p><a href="index.html">Volver al inicio ↑</a></div></footer>
 </body>
 </html>
