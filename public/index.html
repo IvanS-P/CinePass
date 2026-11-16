@@ -3,62 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CinePass: explora la cartelera y descubre tu próxima película.">
     <title>Inicio | CinePass</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <!-- Encabezado y navegación principal -->
+    <!-- Encabezado compartido entre las páginas -->
     <header class="encabezado">
         <div class="contenedor barra">
-            <a class="logo" href="index.html">Cine<span>Pass</span></a>
-            <nav aria-label="Navegación principal">
+            <a class="logo" href="index.html" aria-label="CinePass, ir a Inicio">Cine<span>Pass</span></a>
+            <nav class="menu" aria-label="Navegación principal">
                 <a class="activo" href="index.html" aria-current="page">Inicio</a>
                 <a href="cartelera.html">Cartelera</a>
+                <a href="#proximamente">Mis boletos</a>
+                <a href="#proximamente">Administración</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Presentación de CinePass -->
-        <section class="hero">
-            <div class="contenedor">
-                <p class="etiqueta">Bienvenido a CinePass</p>
-                <h1>Tu próxima película comienza aquí.</h1>
-                <p>Descubre películas, consulta la cartelera y próximamente reserva tus asientos.</p>
-                <a class="boton" href="cartelera.html">Ver cartelera</a>
+        <!-- Presentación principal -->
+        <section class="hero" aria-labelledby="titulo-inicio">
+            <div class="contenedor hero-contenido">
+                <div class="hero-texto">
+                    <p class="etiqueta">UNA NUEVA FORMA DE VIVIR EL CINE</p>
+                    <h1 id="titulo-inicio">Tu próxima película <span>comienza aquí.</span></h1>
+                    <p>Explora nuestras películas de muestra y descubre cómo será reservar tus asientos en CinePass.</p>
+                    <div class="hero-acciones">
+                        <a class="boton" href="cartelera.html">Explorar cartelera</a>
+                        <a class="boton boton-secundario" href="#como-funciona">¿Cómo funciona?</a>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <span class="hero-visual-etiqueta">PRÓXIMAMENTE</span>
+                    <span class="hero-visual-icono">✦</span>
+                    <strong>LA MAGIA DEL CINE</strong>
+                    <span class="hero-visual-subtitulo">Una historia en cada función</span>
+                </div>
             </div>
         </section>
 
-        <!-- Cartelera destacada: contenido temporal -->
+        <!-- Películas destacadas: datos de ejemplo -->
         <section class="contenedor seccion" aria-labelledby="titulo-destacadas">
-            <h2 id="titulo-destacadas">Películas destacadas</h2>
-            <p class="descripcion">Explora algunos de nuestros próximos estrenos.</p>
+            <div class="seccion-cabecera">
+                <div>
+                    <p class="etiqueta">DESCUBRE</p>
+                    <h2 id="titulo-destacadas">Películas destacadas</h2>
+                    <p class="descripcion">Una muestra de cómo lucirá nuestra cartelera.</p>
+                </div>
+                <a class="enlace-texto" href="cartelera.html">Ver todas las películas →</a>
+            </div>
             <div class="cuadricula">
                 <article class="tarjeta">
-                    <div class="poster poster-uno" aria-hidden="true">✦</div>
+                    <div class="poster poster-uno" aria-hidden="true"><span class="poster-simbolo">✦</span><span class="poster-lema">MÁS ALLÁ DE LAS ESTRELLAS</span></div>
                     <div class="tarjeta-contenido">
+                        <span class="categoria">Ciencia ficción</span>
                         <h3>Órbita 9</h3>
-                        <p>Ciencia ficción · 120 min</p>
+                        <p>120 min · Clasificación B</p>
+                        <a class="enlace-tarjeta" href="#proximamente">Ver detalles →</a>
                     </div>
                 </article>
                 <article class="tarjeta">
-                    <div class="poster poster-dos" aria-hidden="true">◆</div>
+                    <div class="poster poster-dos" aria-hidden="true"><span class="poster-simbolo">◆</span><span class="poster-lema">EL MISTERIO TE ESPERA</span></div>
                     <div class="tarjeta-contenido">
+                        <span class="categoria">Misterio</span>
                         <h3>Sombras del Faro</h3>
-                        <p>Misterio · 105 min</p>
+                        <p>105 min · Clasificación B15</p>
+                        <a class="enlace-tarjeta" href="#proximamente">Ver detalles →</a>
                     </div>
                 </article>
                 <article class="tarjeta">
-                    <div class="poster poster-tres" aria-hidden="true">★</div>
+                    <div class="poster poster-tres" aria-hidden="true"><span class="poster-simbolo">★</span><span class="poster-lema">EL JUEGO APENAS COMIENZA</span></div>
                     <div class="tarjeta-contenido">
+                        <span class="categoria">Animación</span>
                         <h3>Aventura Pixel</h3>
-                        <p>Animación · 95 min</p>
+                        <p>95 min · Clasificación A</p>
+                        <a class="enlace-tarjeta" href="#proximamente">Ver detalles →</a>
                     </div>
                 </article>
+            </div>
+        </section>
+
+        <!-- Explicación del futuro proceso de reservación -->
+        <section class="seccion seccion-alternativa" id="como-funciona" aria-labelledby="titulo-pasos">
+            <div class="contenedor">
+                <p class="etiqueta">ASÍ DE FÁCIL</p>
+                <h2 id="titulo-pasos">Tu experiencia en tres pasos</h2>
+                <div class="pasos">
+                    <article class="paso"><span class="paso-numero">01</span><h3>Explora</h3><p>Consulta la cartelera y encuentra una película.</p></article>
+                    <article class="paso"><span class="paso-numero">02</span><h3>Elige</h3><p>Selecciona una función y tus asientos favoritos.</p></article>
+                    <article class="paso"><span class="paso-numero">03</span><h3>Disfruta</h3><p>Confirma tu reserva y consulta tu boleto digital.</p></article>
+                </div>
+                <p class="nota">La selección de funciones, asientos y boletos se incorporará en próximas etapas.</p>
+            </div>
+        </section>
+
+        <!-- Destino temporal de los enlaces a módulos aún no creados -->
+        <section class="contenedor seccion" id="proximamente" aria-labelledby="titulo-proximamente">
+            <div class="aviso-proximamente">
+                <span class="aviso-icono" aria-hidden="true">🎟</span>
+                <div>
+                    <p class="etiqueta">CINEPASS EN DESARROLLO</p>
+                    <h2 id="titulo-proximamente">Pronto habrá más funciones</h2>
+                    <p>Detalle de película, selección de asientos, confirmación, Mis boletos y Administración se integrarán cuando estén listos.</p>
+                    <a class="enlace-texto" href="cartelera.html">Mientras tanto, visita la cartelera →</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="pie"><p>CinePass · Proyecto final de Programación Web</p></footer>
+    <footer class="pie"><div class="contenedor pie-contenido"><p><strong>CinePass</strong> · Proyecto final de Programación Web</p><a href="index.html">Volver al inicio ↑</a></div></footer>
 </body>
 </html>
