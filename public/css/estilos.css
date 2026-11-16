@@ -1,0 +1,264 @@
+
+/* =========================================================
+   CINEPASS - HOJA DE ESTILOS
+   Proyecto Final de Programación Web
+
+   1. CSS BÁSICO: propiedades habituales de diseño.
+   2. CSS ADICIONAL: técnicas y propiedades investigadas.
+   ========================================================= */
+
+
+/* =========================================================
+   1. CSS BÁSICO
+   Estilos generales, colores, márgenes, tipografías,
+   bordes, espaciado y pseudoclases.
+   ========================================================= */
+
+/* Estilos generales de la página */
+body {
+    margin: 0;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+}
+
+/* Enlaces */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Encabezado y logotipo */
+.encabezado {
+    background-color: #111827;
+    border-bottom: 1px solid #303b50;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--principal);
+}
+
+/* Efectos al pasar el cursor y página activa */
+nav a:hover,
+nav .activo {
+    color: var(--principal);
+}
+
+/* Texto de bienvenida */
+.hero p {
+    max-width: 600px;
+    color: var(--secundario);
+    line-height: 1.7;
+}
+
+.etiqueta {
+    color: #ff8b96 !important;
+    font-weight: bold;
+}
+
+/* Botones */
+.boton {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 25px;
+    border-radius: 8px;
+    background: var(--principal);
+    color: white;
+    font-weight: bold;
+}
+
+.boton:hover {
+    background: #c82c39;
+}
+
+/* Secciones y descripciones */
+.seccion {
+    padding-top: 55px;
+    padding-bottom: 70px;
+}
+
+.descripcion {
+    color: var(--secundario);
+    line-height: 1.6;
+}
+
+/* Tarjetas de películas */
+.tarjeta {
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--tarjeta);
+    border: 1px solid #303b50;
+}
+
+.tarjeta-contenido {
+    padding: 18px;
+}
+
+.tarjeta-contenido h2,
+.tarjeta-contenido h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.tarjeta-contenido p {
+    color: var(--secundario);
+    font-size: 14px;
+}
+
+/* Buscador de películas */
+.buscador {
+    max-width: 420px;
+    margin-top: 30px;
+}
+
+.buscador label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.buscador input {
+    width: 100%;
+    padding: 14px;
+    background: var(--tarjeta);
+    color: white;
+    border: 1px solid #516078;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Pie de página */
+.pie {
+    padding: 25px;
+    text-align: center;
+    color: var(--secundario);
+    background: #111827;
+}
+
+
+/* =========================================================
+   2. CSS ADICIONAL / INVESTIGADO
+   Técnicas utilizadas para mejorar la organización,
+   distribución y adaptación visual del sitio.
+   ========================================================= */
+
+/* Variables CSS (:root)
+   Permiten definir colores una sola vez y reutilizarlos
+   mediante var() en distintas partes de la página. */
+:root {
+    --fondo: #0b1020;
+    --tarjeta: #182238;
+    --principal: #e63946;
+    --texto: #f8fafc;
+    --secundario: #aab5c8;
+}
+
+/* Modelo de caja (box-sizing)
+   Incluye el padding y el borde dentro del tamaño
+   total de cada elemento. */
+* {
+    box-sizing: border-box;
+}
+
+/* Función min()
+   Permite limitar el ancho del contenido a 1100px,
+   sin superar el 90% del espacio disponible. */
+.contenedor {
+    width: min(1100px, 90%);
+    margin: auto;
+}
+
+/* Flexbox
+   Organiza los elementos del encabezado horizontalmente
+   y distribuye el espacio entre ellos. */
+.barra {
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Flexbox para los enlaces de navegación */
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+/* Gradiente lineal
+   Combina varios colores en el fondo de bienvenida. */
+.hero {
+    padding: 100px 0;
+    background: linear-gradient(
+        120deg, #121f3b, #0b1020, #401827
+    );
+}
+
+/* Función clamp()
+   Ajusta el tamaño del título según el ancho de
+   la pantalla, con un mínimo y máximo definidos. */
+.hero h1 {
+    max-width: 700px;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.15;
+}
+
+/* CSS Grid
+   Distribuye las tarjetas de películas en columnas
+   que se adaptan al espacio disponible.
+
+   auto-fit: ajusta automáticamente la cantidad de columnas.
+   minmax(): establece un ancho mínimo y máximo. */
+.cuadricula {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit, minmax(210px, 1fr)
+    );
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Grid con place-items
+   Centra horizontal y verticalmente el contenido
+   de los carteles provisionales. */
+.poster {
+    min-height: 230px;
+    display: grid;
+    place-items: center;
+    font-size: 80px;
+}
+
+/* Gradientes de los carteles provisionales */
+.poster-uno {
+    background: linear-gradient(135deg, #142c60, #874db7);
+}
+
+.poster-dos {
+    background: linear-gradient(135deg, #113d43, #2d806d);
+}
+
+.poster-tres {
+    background: linear-gradient(135deg, #9c3f42, #e99c4a);
+}
+
+/* Media queries - Diseño responsivo
+   Cambian ciertos estilos cuando la pantalla
+   tiene un ancho de 600px o menos. */
+@media (max-width: 600px) {
+    .barra {
+        flex-direction: column;
+        padding: 18px 0;
+    }
+
+    .hero {
+        padding: 65px 0;
+    }
+
+    nav {
+        gap: 18px;
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | CinePass</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <!-- Encabezado y navegación principal -->
+    <header class="encabezado">
+        <div class="contenedor barra">
+            <a class="logo" href="index.html">Cine<span>Pass</span></a>
+            <nav aria-label="Navegación principal">
+                <a class="activo" href="index.html" aria-current="page">Inicio</a>
+                <a href="cartelera.html">Cartelera</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Presentación de CinePass -->
+        <section class="hero">
+            <div class="contenedor">
+                <p class="etiqueta">Bienvenido a CinePass</p>
+                <h1>Tu próxima película comienza aquí.</h1>
+                <p>Descubre películas, consulta la cartelera y próximamente reserva tus asientos.</p>
+                <a class="boton" href="cartelera.html">Ver cartelera</a>
+            </div>
+        </section>
+
+        <!-- Cartelera destacada: contenido temporal -->
+        <section class="contenedor seccion" aria-labelledby="titulo-destacadas">
+            <h2 id="titulo-destacadas">Películas destacadas</h2>
+            <p class="descripcion">Explora algunos de nuestros próximos estrenos.</p>
+            <div class="cuadricula">
+                <article class="tarjeta">
+                    <div class="poster poster-uno" aria-hidden="true">✦</div>
+                    <div class="tarjeta-contenido">
+                        <h3>Órbita 9</h3>
+                        <p>Ciencia ficción · 120 min</p>
+                    </div>
+                </article>
+                <article class="tarjeta">
+                    <div class="poster poster-dos" aria-hidden="true">◆</div>
+                    <div class="tarjeta-contenido">
+                        <h3>Sombras del Faro</h3>
+                        <p>Misterio · 105 min</p>
+                    </div>
+                </article>
+                <article class="tarjeta">
+                    <div class="poster poster-tres" aria-hidden="true">★</div>
+                    <div class="tarjeta-contenido">
+                        <h3>Aventura Pixel</h3>
+                        <p>Animación · 95 min</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie"><p>CinePass · Proyecto final de Programación Web</p></footer>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartelera | CinePass</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/cartelera.js" defer></script>
+</head>
+<body>
+    <!-- Encabezado y navegación principal -->
+    <header class="encabezado">
+        <div class="contenedor barra">
+            <a class="logo" href="index.html">Cine<span>Pass</span></a>
+            <nav aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <a class="activo" href="cartelera.html" aria-current="page">Cartelera</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenedor seccion">
+        <h1>Cartelera</h1>
+        <p class="descripcion">Encuentra una película para tu próxima visita.</p>
+
+        <!-- Buscador controlado mediante JavaScript -->
+        <div class="buscador">
+            <label for="buscar-pelicula">Buscar película</label>
+            <input type="search" id="buscar-pelicula" placeholder="Escribe el título...">
+        </div>
+
+        <!-- Películas de ejemplo; después vendrán de la API REST -->
+        <section aria-label="Películas disponibles">
+            <div class="cuadricula" id="lista-peliculas">
+                <article class="tarjeta">
+                    <div class="poster poster-uno" aria-hidden="true">✦</div>
+                    <div class="tarjeta-contenido">
+                        <h2>Órbita 9</h2>
+                        <p>Ciencia ficción · 120 min</p>
+                        <p>Clasificación: B</p>
+                    </div>
+                </article>
+                <article class="tarjeta">
+                    <div class="poster poster-dos" aria-hidden="true">◆</div>
+                    <div class="tarjeta-contenido">
+                        <h2>Sombras del Faro</h2>
+                        <p>Misterio · 105 min</p>
+                        <p>Clasificación: B15</p>
+                    </div>
+                </article>
+                <article class="tarjeta">
+                    <div class="poster poster-tres" aria-hidden="true">★</div>
+                    <div class="tarjeta-contenido">
+                        <h2>Aventura Pixel</h2>
+                        <p>Animación · 95 min</p>
+                        <p>Clasificación: A</p>
+                    </div>
+                </article>
+            </div>
+            <p id="sin-resultados" hidden>No encontramos películas con ese título.</p>
+        </section>
+    </main>
+
+    <footer class="pie"><p>CinePass · Proyecto final de Programación Web</p></footer>
+</body>
+</html>
