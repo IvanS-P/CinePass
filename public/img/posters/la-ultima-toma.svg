@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" role="img" aria-labelledby="t l">
+  <title id="t">Póster de La Última Toma</title>
+  <desc id="l">Fondo degradado vino a rosa con rombo perfilado.</desc>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4b2d4b"/><stop offset="1" stop-color="#b05d83"/></linearGradient></defs>
+  <rect width="400" height="600" rx="20" fill="url(#g)"/>
+  <circle cx="52" cy="46" r="3" fill="#c4f5d8" opacity=".85"/><circle cx="348" cy="70" r="2.4" fill="#c4f5d8" opacity=".7"/><circle cx="322" cy="38" r="3.2" fill="#fff" opacity=".6"/><circle cx="70" cy="540" r="2.6" fill="#fff" opacity=".5"/>
+  <path d="M200 172L268 240L200 308L132 240Z" fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M200 212L228 240L200 268L172 240Z" fill="#fff"/>
+  <text x="200" y="432" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="bold" fill="#fff" text-anchor="middle" textLength="330" lengthAdjust="spacing">LA ÚLTIMA TOMA</text>
+  <text x="200" y="474" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="2" fill="#fff" fill-opacity=".85" text-anchor="middle" textLength="260" lengthAdjust="spacing">UNA HISTORIA POR CONTAR</text>
+  <rect x="150" y="500" width="100" height="2" rx="1" fill="#fff" opacity=".4"/>
+</svg>

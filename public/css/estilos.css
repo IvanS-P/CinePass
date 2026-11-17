@@ -18,7 +18,8 @@ body {
     margin: 0;
     background-color: var(--fondo);
     color: var(--texto);
-    font-family: Arial, sans-serif;
+    /* Poppins con respaldo Arial: el respaldo cubre la clase sin conexión. */
+    font-family: 'Poppins', Arial, sans-serif;
     line-height: 1.5;
 }
 
@@ -49,7 +50,13 @@ a { color: inherit; text-decoration: none; }
     flex-shrink: 0;
 }
 
-.logo span, .menu a:hover, .menu .activo { color: var(--principal); }
+/* Wordmark blanco según referencia; el acento visual del menú es la menta. */
+.logo span { color: inherit; }
+.menu a:hover, .menu .activo { color: var(--menta-enlace); }
+.menu .activo { text-decoration: underline; text-underline-offset: 9px; text-decoration-thickness: 2px; }
+
+/* El avatar viaja al extremo derecho de la barra (como en la referencia). */
+.barra-avatar { order: 10; margin-left: 10px; }
 
 .menu a {
     font-size: 15px;
@@ -208,13 +215,17 @@ a { color: inherit; text-decoration: none; }
    Técnicas de distribución, adaptabilidad y decoración.
    ========================================================= */
 
-/* Variables CSS: colores compartidos para mantener consistencia. */
+/* Variables CSS: colores compartidos para mantener consistencia.
+   --menta-* llegan de la referencia del rediseño (badges, avatar, "ver más"). */
 :root {
     --fondo: #0b1020;
     --tarjeta: #182238;
     --principal: #e63946;
     --texto: #f8fafc;
     --secundario: #aab5c8;
+    --menta-humo: #c4f5d8;
+    --menta-enlace: #8fd6b8;
+    --coral-suave: #f0715a;
 }
 
 /* box-sizing: incluye padding y borde dentro del tamaño total. */
@@ -334,4 +345,176 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff9ba4; outline-offs
 @media (prefers-reduced-motion: reduce) {
     .tarjeta { transition: none; }
     .tarjeta:hover { transform: none; }
+    .carrusel-fila { scroll-behavior: auto; }
+    .flecha-carrusel, .chat-flotante { transition: none; }
+}
+
+
+/* =========================================================
+   3. DISEÑO SEGÚN REFERENCIA (mockup del rediseño)
+   Hero centrado estrellado, avatar del encabezado, tarjetas
+   claras con badge de clasificación, carrusel scrolleable con
+   flechas, botón flotante de chat y estilos de los módulos
+   (asientos, boleto, formularios, tabla de administración).
+   Las clasificaciones son orientativas: A menta, B dorado y
+   B15 coral suave, igual que en la referencia.
+   ========================================================= */
+
+/* --- Encabezado: avatar con caret a la derecha (referencia) --- */
+.barra-avatar { display: flex; align-items: center; gap: 8px; color: #cfd8ea; font-size: 14px; }
+.avatar-circulo { width: 40px; height: 40px; border-radius: 50%; background: #22304b; border: 1px solid #44536f; display: flex; align-items: center; justify-content: center; }
+.avatar-circulo img { width: 22px; height: 22px; }
+.barra-avatar:hover { color: white; }
+.barra-avatar:hover .avatar-circulo { border-color: var(--menta-enlace); }
+.avatar-caret { font-size: 12px; }
+
+/* --- Hero centrado con cielo estrellado y resplandor --- */
+.hero-inicio {
+    padding: 80px 0 90px;
+    background-image:
+        radial-gradient(2.5px 2.5px at 8% 18%, #cfd8ea 60%, transparent 61%),
+        radial-gradient(2px 2px at 22% 64%, #9fb4d8 60%, transparent 61%),
+        radial-gradient(2.5px 2.5px at 31% 12%, #cfd8ea 60%, transparent 61%),
+        radial-gradient(1.5px 1.5px at 44% 42%, #8fa5c8 60%, transparent 61%),
+        radial-gradient(2.5px 2.5px at 62% 16%, #cfd8ea 60%, transparent 61%),
+        radial-gradient(2px 2px at 73% 58%, #9fb4d8 60%, transparent 61%),
+        radial-gradient(2.5px 2.5px at 88% 24%, #cfd8ea 60%, transparent 61%),
+        radial-gradient(1.5px 1.5px at 93% 70%, #8fa5c8 60%, transparent 61%),
+        radial-gradient(2px 2px at 15% 88%, #9fb4d8 60%, transparent 61%),
+        radial-gradient(2px 2px at 55% 90%, #8fa5c8 60%, transparent 61%),
+        radial-gradient(circle at 50% 32%, #17274a 0%, #0c1526 48%, #070b16 100%);
+}
+
+.hero-centrado { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+.hero-logo { width: 200px; height: 200px; filter: drop-shadow(0 0 26px rgba(196, 245, 216, .28)) drop-shadow(0 0 48px rgba(240, 113, 90, .38)); }
+.hero-titulo { font-size: clamp(44px, 6.2vw, 74px); line-height: 1.08; margin: 4px 0 0; font-weight: bold; }
+.hero-sub { color: #aeb9cf; font-size: clamp(18px, 2.4vw, 26px); font-weight: normal; margin: 0; }
+.boton-pill { margin-top: 26px; border-radius: 999px; padding: 15px 36px; background-color: var(--coral-suave); border-color: var(--coral-suave); box-shadow: 0 0 32px rgba(240, 113, 90, .5), 0 12px 30px rgba(0, 0, 0, .5); font-size: 17px; }
+.boton-pill:hover { background-color: #f07f66; box-shadow: 0 0 46px rgba(240, 113, 90, .75), 0 12px 30px rgba(0, 0, 0, .5); }
+
+/* --- Carrusel de destacadas: fila scrolleable con flechas --- */
+.carrusel { position: relative; }
+.carrusel-fila {
+    display: flex; gap: 20px; overflow-x: auto; margin-top: 8px; padding: 18px 4px 20px;
+    scroll-snap-type: x proximity; scroll-behavior: smooth; scrollbar-color: #3a4a66 transparent;
+}
+.carrusel-fila > .tarjeta { flex: 0 0 235px; scroll-snap-align: start; }
+.flecha-carrusel {
+    position: absolute; top: 55%; transform: translateY(-50%); z-index: 5;
+    width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
+    background: #fff; color: #1c2433; font-size: 19px; font-weight: bold; font-family: inherit;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .45); transition: opacity .2s ease;
+}
+.flecha-carrusel.izq { left: 0; } .flecha-carrusel.der { right: 0; }
+.flecha-carrusel:hover { background: var(--menta-humo); }
+.flecha-carrusel[disabled] { opacity: 0; pointer-events: none; }
+.enlace-menta { color: var(--menta-enlace); font-weight: bold; }
+.enlace-menta:hover { color: white; }
+
+/* --- Tarjetas claras según referencia (Inicio y Cartelera) --- */
+.tarjeta { background-color: #ffffff; border-color: #2c3950; box-shadow: 0 12px 28px rgba(0, 0, 0, .35); }
+.tarjeta:hover { border-color: #44536f; }
+.card-poster { position: relative; display: block; }
+.card-poster .poster-img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; }
+.badge { position: absolute; top: 10px; right: 10px; padding: 4px 11px; border-radius: 999px; background: var(--menta-humo); color: #152318; font-size: 12px; font-weight: bold; }
+.card-info { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; background: #fff; min-height: 76px; }
+.card-info .card-titulo { display: block; margin: 0 0 3px; color: #141c2c; font-size: 17px; }
+.card-info .card-meta { display: block; margin: 0; color: #5a6780; font-size: 12.5px; }
+.pill-clasif { flex-shrink: 0; padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: bold; background: var(--menta-humo); color: #1d4030; }
+.pill-clasif.B { background: #f2e3b9; color: #6b5312; }
+.pill-clasif.B15 { background: #f4cdbc; color: #8a4020; }
+.tarjeta a.card-enlace { position: static; color: inherit; text-decoration: none; display: block; }
+.tarjeta a.card-enlace::after { content: ""; position: absolute; inset: 0; }
+.tarjeta { position: relative; }
+.tarjeta a.card-enlace:focus-visible { outline: none; }
+.tarjeta a.card-enlace:focus-visible::after { outline: 2px solid #ff9ba4; outline-offset: 2px; border-radius: 14px; }
+
+/* --- Botón flotante de chat (solo Inicio, según referencia) --- */
+.chat-flotante {
+    position: fixed; right: 22px; bottom: 22px; z-index: 60;
+    width: 58px; height: 58px; border-radius: 50%; background: var(--coral-suave);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .5), 0 0 30px rgba(240, 113, 90, .4);
+    transition: transform .2s ease;
+}
+.chat-flotante:hover { transform: translateY(-3px); }
+.chat-flotante img { width: 26px; height: 26px; }
+
+/* --- Botones y campos de los módulos nuevos --- */
+.boton-menta { border-color: var(--menta-humo); background-color: var(--menta-humo); color: #152318; border-radius: 999px; padding: 13px 26px; }
+.boton-menta:hover { background-color: #a9e8c9; }
+.boton-claro { background-color: #fff; color: #1c2433; border-color: #fff; border-radius: 999px; padding: 13px 26px; }
+.boton-claro:hover { background-color: #e6ebf3; }
+.campo-grupo { display: grid; gap: 18px; margin-top: 24px; max-width: 560px; }
+.errores-lista { margin: 14px 0 0; padding-left: 20px; color: #ff9ba4; font-size: 13.5px; }
+
+/* --- Mapa de asientos (módulo 04) --- */
+.mapa-butacas { display: grid; gap: 10px; margin-top: 18px; justify-content: center; }
+.fila-butacas { display: grid; grid-template-columns: 34px repeat(var(--cols, 10), 44px); gap: 8px; align-items: center; }
+.fila-nombre { text-align: center; color: var(--secundario); font-weight: bold; font-size: 13px; }
+.butaca {
+    width: 44px; height: 40px; border-radius: 10px 10px 6px 6px; cursor: pointer;
+    border: 2px solid #45556f; background: #22304b; color: #dbe4f4;
+    font-size: 12px; font-weight: bold; font-family: inherit;
+    display: flex; align-items: center; justify-content: center;
+}
+.butaca.libre:hover { border-color: var(--menta-enlace); }
+.butaca.seleccionado { border-color: var(--principal); background: var(--principal); color: #fff; }
+.butaca.ocupado { border-color: #2a3346; background: #141c2c; color: #5a6780; cursor: not-allowed; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 18px 0 4px; color: var(--secundario); font-size: 13px; }
+.leyenda .chip { display: inline-flex; align-items: center; gap: 8px; }
+.leyenda .cubo { width: 16px; height: 16px; border-radius: 5px 5px 3px 3px; border: 2px solid; }
+.cubo.l { border-color: #45556f; background: #22304b; }
+.cubo.s { border-color: var(--principal); background: var(--principal); }
+.cubo.o { border-color: #2a3346; background: #141c2c; }
+.resumen-total { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: 22px; padding: 18px 22px; background: var(--tarjeta); border: 1px solid #303b50; border-radius: 12px; font-size: 18px; }
+.resumen-total strong { color: var(--menta-humo); }
+
+/* --- Detalle de película (módulo 03) --- */
+.detalle-hero { display: grid; grid-template-columns: 280px 1fr; gap: 34px; align-items: start; margin-top: 26px; }
+.detalle-hero > img { width: 100%; border-radius: 16px; box-shadow: 0 16px 38px rgba(0, 0, 0, .45); }
+.datos-lista { display: grid; gap: 9px; margin: 14px 0 18px; max-width: 560px; }
+.datos-lista div { display: flex; gap: 12px; color: var(--secundario); font-size: 14.5px; }
+.datos-lista strong { min-width: 125px; color: var(--texto); }
+.detalle-funciones { margin-top: 40px; }
+
+/* --- Boleto digital (módulo 06) --- */
+.boleto { max-width: 520px; margin-top: 26px; background: #f7f9fb; color: #1c2433; border-radius: 16px; overflow: hidden; box-shadow: 0 16px 38px rgba(0, 0, 0, .45); }
+.boleto-cab { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 22px; background: var(--principal); color: #fff; }
+.boleto-cab img { width: 30px; height: 30px; }
+.boleto-cuerpo { display: grid; gap: 10px; padding: 22px; }
+.boleto-fila { display: flex; justify-content: space-between; gap: 14px; padding-bottom: 9px; border-bottom: 1px dashed #b9c4d3; font-size: 14.5px; }
+.boleto-fila span:first-child { color: #5a6780; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+.folio { font-family: Consolas, monospace; font-size: 22px; font-weight: bold; letter-spacing: 2px; }
+.boleto-pie { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 22px; border-top: 2px dashed #b9c4d3; font-size: 14px; color: #3c4a63; }
+.estado-activa { color: #1d8a55; font-weight: bold; }
+.estado-cancelada { color: #c22f3e; font-weight: bold; }
+
+/* --- Panel de administración (módulo 07) --- */
+.login-box { max-width: 420px; margin: 40px auto; padding: 30px; background: var(--tarjeta); border: 1px solid #303b50; border-radius: 16px; }
+.panel-admin { display: grid; gap: 30px; margin-top: 26px; }
+.panel-admin h2 { margin: 0 0 6px; font-size: 22px; }
+.panel-admin fieldset { margin: 0; padding: 22px; border: 1px solid #303b50; border-radius: 14px; background: var(--tarjeta); }
+.panel-admin legend { padding: 0 8px; font-weight: bold; color: var(--menta-enlace); }
+.tabla { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 14.5px; }
+.tabla th { padding: 11px 12px; background: #141e32; color: var(--secundario); text-align: left; border-bottom: 2px solid #303b50; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+.tabla td { padding: 12px; border-bottom: 1px solid #26344e; vertical-align: middle; }
+.tabla tr:hover td { background: #141e32; }
+.tabla .acciones-celda { white-space: nowrap; }
+.btn-mini { display: inline-block; padding: 7px 12px; border-radius: 8px; background: #22304b; border: 1px solid #44536f; color: #dbe4f4; font-size: 12.5px; font-weight: bold; font-family: inherit; cursor: pointer; }
+.btn-mini:hover { border-color: var(--menta-enlace); }
+.btn-mini.peligro { border-color: #6e3a44; color: #ff9ba4; }
+.btn-mini.peligro:hover { background: #3a1d26; }
+
+/* --- Ajustes adaptables del rediseño --- */
+@media (max-width: 600px) {
+    .hero-inicio { padding: 58px 0 64px; }
+    .hero-logo { width: 150px; height: 150px; }
+    .carrusel-fila > .tarjeta { flex-basis: 205px; }
+    .fila-butacas { grid-template-columns: 28px repeat(var(--cols, 10), 38px); }
+    .butaca { width: 38px; height: 34px; }
+    .detalle-hero { grid-template-columns: 1fr; }
+    .barra-avatar { position: static; }
+    .chat-flotante { right: 14px; bottom: 14px; }
 }
